@@ -93,10 +93,8 @@ class BeverageFeatureBuilder:
 
         return results
 
-    # ------------------------------------------------------------------
-    # Branch-level beverage summary
-    # ------------------------------------------------------------------
-
+     # Branch-level beverage summary
+ 
     def _build_branch_summary(
         self,
         items: pd.DataFrame,
@@ -156,10 +154,8 @@ class BeverageFeatureBuilder:
         logger.info("Built beverage branch summary: %d rows", len(result))
         return result
 
-    # ------------------------------------------------------------------
-    # Product-level performance
-    # ------------------------------------------------------------------
-
+     # Product-level performance
+ 
     def _build_product_performance(self, items: pd.DataFrame) -> pd.DataFrame:
         """Per-product performance with cross-branch ranking."""
         bev = items[items["bev_category"].isin(["coffee", "milkshake", "frappe"])].copy()
@@ -210,9 +206,7 @@ class BeverageFeatureBuilder:
         logger.info("Built product performance: %d rows", len(result))
         return result
 
-    # ------------------------------------------------------------------
-    # Growth gaps
-    # ------------------------------------------------------------------
+     # Growth gaps
 
     def _build_growth_gaps(
         self, items: pd.DataFrame, branch_summary: pd.DataFrame

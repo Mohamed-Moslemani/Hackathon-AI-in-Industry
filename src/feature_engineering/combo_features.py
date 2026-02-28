@@ -96,10 +96,8 @@ class ComboFeatureBuilder:
 
         return results
 
-    # ------------------------------------------------------------------
-    # Data loading
-    # ------------------------------------------------------------------
-
+     # Data loading
+ 
     def _load_data(self) -> None:
         self._sales = pd.read_csv(self.cleaned_dir / "sales_by_customer.csv")
         self._item_meta = pd.read_csv(self.cleaned_dir / "sales_by_item.csv")
@@ -109,10 +107,8 @@ class ComboFeatureBuilder:
             len(self._item_meta),
         )
 
-    # ------------------------------------------------------------------
-    # Modifier detection
-    # ------------------------------------------------------------------
-
+     # Modifier detection
+ 
     def _build_modifier_set(self) -> Set[str]:
         """Return a set of item descriptions that are modifiers, not products."""
         modifiers: Set[str] = set()
@@ -136,10 +132,8 @@ class ComboFeatureBuilder:
             return True
         return any(p.search(desc) for p in MODIFIER_PATTERNS)
 
-    # ------------------------------------------------------------------
-    # Basket construction
-    # ------------------------------------------------------------------
-
+     # Basket construction
+ 
     def _build_baskets(self, modifier_set: Set[str]) -> pd.DataFrame:
         """Group line items into per-customer baskets of real products."""
         df = self._sales.copy()
@@ -188,10 +182,8 @@ class ComboFeatureBuilder:
         self._baskets = baskets
         return baskets
 
-    # ------------------------------------------------------------------
-    # Co-purchase analysis
-    # ------------------------------------------------------------------
-
+     # Co-purchase analysis
+ 
     def _compute_copurchase_matrix(
         self, baskets: pd.DataFrame
     ) -> pd.DataFrame:
@@ -280,10 +272,8 @@ class ComboFeatureBuilder:
                      len(df), min_support, min_confidence)
         return df
 
-    # ------------------------------------------------------------------
-    # Item affinity scores
-    # ------------------------------------------------------------------
-
+     # Item affinity scores
+ 
     def _compute_item_affinity(self, baskets: pd.DataFrame) -> pd.DataFrame:
         """Per-item summary: how often it appears, avg basket size, top partners."""
         item_stats: Dict[str, Dict] = {}
