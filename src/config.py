@@ -2,8 +2,8 @@ from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 RAW_DATA_DIR = PROJECT_ROOT / "Conut bakery Scaled Data"
-CLEANED_DATA_DIR = PROJECT_ROOT / "data" / "cleaned"
-
+CLEANED_DATA_DIR = PROJECT_ROOT / "data_cleaned" / "cleaned"
+FEATURES_DIR = PROJECT_ROOT / "data_cleaned" / "features"
 RAW_FILES = {
     "division_summary": RAW_DATA_DIR / "REP_S_00136_SMRY.csv",
     "tax_report": RAW_DATA_DIR / "REP_S_00194_SMRY.csv",
