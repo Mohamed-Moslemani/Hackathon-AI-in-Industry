@@ -64,8 +64,8 @@ class StaffingFeatureBuilder:
 
         return results
 
-     # Shift-level patterns
- 
+       # Shift-level patterns
+   
     def _build_shift_patterns(self, att: pd.DataFrame) -> pd.DataFrame:
         df = att.copy()
 
@@ -101,8 +101,8 @@ class StaffingFeatureBuilder:
         logger.info("Built shift patterns: %d shifts", len(result))
         return result
 
-     # Branch staffing profile
- 
+       # Branch staffing profile
+   
     def _build_branch_staffing_profile(
         self, att: pd.DataFrame, monthly: pd.DataFrame
     ) -> pd.DataFrame:
@@ -175,8 +175,8 @@ class StaffingFeatureBuilder:
         logger.info("Built staffing profiles for %d branches", len(result))
         return result
 
-     # Daily coverage
- 
+       # Daily coverage
+   
     def _build_daily_coverage(self, att: pd.DataFrame) -> pd.DataFrame:
         """Per-branch, per-day: how many employees worked and total hours."""
         df = att.copy()

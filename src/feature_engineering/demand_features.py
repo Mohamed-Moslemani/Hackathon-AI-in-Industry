@@ -63,8 +63,8 @@ class DemandFeatureBuilder:
 
         return results
 
-     # Monthly time-series features
- 
+       # Monthly time-series features
+   
     def _build_monthly_features(self, monthly: pd.DataFrame) -> pd.DataFrame:
         """Enrich the monthly sales with lag, growth, and trend features."""
         df = monthly.sort_values(["branch", "date"]).copy()
@@ -103,8 +103,8 @@ class DemandFeatureBuilder:
         logger.info("Built monthly features: %d rows x %d cols", len(result), len(result.columns))
         return result
 
-     # Static branch profile
- 
+       # Static branch profile
+   
     def _build_branch_profile(
         self,
         monthly: pd.DataFrame,
@@ -196,8 +196,8 @@ class DemandFeatureBuilder:
         logger.info("Built branch profiles for %d branches", len(result))
         return result
 
-     # Forecast-ready dataset
- 
+       # Forecast-ready dataset
+   
     def _build_forecast_dataset(
         self,
         branch_monthly: pd.DataFrame,

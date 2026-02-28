@@ -79,8 +79,8 @@ class ComboRecommender:
 
         return results
 
-     # Price lookup
- 
+       # Price lookup
+   
     def _build_price_map(self, items: pd.DataFrame) -> Dict[str, float]:
         """Average unit price per product (upper-cased, stripped).
 
@@ -112,8 +112,8 @@ class ComboRecommender:
     def _combo_price(self, item_list: List[str], price_map: Dict[str, float]) -> float:
         return sum(self._lookup_price(item, price_map) for item in item_list)
 
-     # 2-item combos
- 
+       # 2-item combos
+   
     def _rank_two_item_combos(
         self,
         rules: pd.DataFrame,
@@ -178,8 +178,8 @@ class ComboRecommender:
         logger.info("Ranked %d 2-item combos", len(result))
         return result.reset_index().rename(columns={"index": "rank"})
 
-     # 3-item combos
- 
+       # 3-item combos
+   
     def _find_three_item_combos(
         self,
         baskets: pd.DataFrame,
@@ -233,8 +233,8 @@ class ComboRecommender:
         logger.info("Found %d 3-item combos (min 2 occurrences)", len(df))
         return df
 
-     # Branch-level combos
- 
+       # Branch-level combos
+   
     def _branch_level_combos(
         self,
         baskets: pd.DataFrame,
@@ -275,8 +275,8 @@ class ComboRecommender:
                      len(result), result["branch"].nunique() if not result.empty else 0)
         return result
 
-     # Executive summary
- 
+       # Executive summary
+   
     def _build_summary(
         self,
         two_item: pd.DataFrame,

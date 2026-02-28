@@ -82,8 +82,8 @@ class StaffingEstimator:
 
         return results
 
-      # Shift-level recommendations
-  
+       # Shift-level recommendations
+   
     def _build_shift_recommendations(
         self,
         shifts: pd.DataFrame,
@@ -150,8 +150,8 @@ class StaffingEstimator:
         logger.info("Built shift recommendations: %d rows", len(result))
         return result
 
-      # Daily scheduling guidelines
-  
+       # Daily scheduling guidelines
+   
     def _build_scheduling_guidelines(
         self,
         daily: pd.DataFrame,
@@ -211,8 +211,8 @@ class StaffingEstimator:
         logger.info("Built scheduling guidelines: %d rows", len(result))
         return result
 
-      # Executive summary
-  
+       # Executive summary
+   
     def _build_summary(
         self,
         recommendations: pd.DataFrame,
