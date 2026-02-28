@@ -3,7 +3,7 @@
     "conut-bakery-ops": {
       "command": "python",
       "args": ["-m", "src.openclaw"],
-      "cwd": "c:\\Users\\mmoslemani001\\Downloads\\Hackathon\\Hackathon",
+      "cwd": "/home/mohamed/Downloads/Hackathon/Hackathon",
       "env": {
         "PYTHONPATH": "."
       }
