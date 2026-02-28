@@ -81,10 +81,8 @@ class DemandForecaster:
 
         return results
 
-    # ------------------------------------------------------------------
-    # Core forecasting
-    # ------------------------------------------------------------------
-
+      # Core forecasting
+  
     def _forecast_all_branches(self, monthly: pd.DataFrame) -> pd.DataFrame:
         all_rows: List[Dict] = []
 
@@ -164,10 +162,8 @@ class DemandForecaster:
         logger.info("Generated forecasts for %d branch-months", len(df))
         return df
 
-    # ------------------------------------------------------------------
-    # Forecasting methods
-    # ------------------------------------------------------------------
-
+      # Forecasting methods
+  
     @staticmethod
     def _linear_trend(x: np.ndarray, y: np.ndarray) -> np.ndarray:
         """Fit y = a + b*x via OLS, return fitted values."""
@@ -229,10 +225,8 @@ class DemandForecaster:
         fitted = self._linear_trend(trend_idx, actuals)
         return actuals - fitted
 
-    # ------------------------------------------------------------------
-    # Executive summary
-    # ------------------------------------------------------------------
-
+      # Executive summary
+  
     def _build_summary(
         self, forecasts: pd.DataFrame, profile: pd.DataFrame
     ) -> Dict[str, Any]:

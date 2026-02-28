@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """
 Conut Bakery — Chief of Operations Agent
-=========================================
 End-to-end pipeline: data cleaning -> feature engineering -> analytics -> reporting.
 
 Run:
@@ -18,9 +17,7 @@ import sys
 import time
 from pathlib import Path
 
-# ---------------------------------------------------------------------------
-# Ensure project root is on sys.path
-# ---------------------------------------------------------------------------
+ # Ensure project root is on sys.path
 PROJECT_ROOT = Path(__file__).resolve().parent
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
@@ -31,10 +28,8 @@ from src.feature_engineering.pipeline import FeaturePipeline
 from src.analytics.pipeline import AnalyticsPipeline
 from src.inference.engine import InferenceEngine
 
-# ---------------------------------------------------------------------------
-# Formatting helpers
-# ---------------------------------------------------------------------------
-
+ # Formatting helpers
+ 
 SEP = "=" * 72
 THIN = "-" * 72
 
@@ -62,10 +57,8 @@ def fmt_pct(val: float) -> str:
     return f"{val * 100:.1f}%"
 
 
-# ---------------------------------------------------------------------------
-# Report generators
-# ---------------------------------------------------------------------------
-
+ # Report generators
+ 
 def report_combo(engine: InferenceEngine) -> None:
     print(header("1. COMBO OPTIMIZATION"))
     data = engine.get_combo_recommendations()
@@ -246,10 +239,8 @@ def report_inference_demo(engine: InferenceEngine) -> None:
             print(f"    ... ({compact.count(chr(10)) - 12} more lines)")
 
 
-# ---------------------------------------------------------------------------
-# Pipeline stages
-# ---------------------------------------------------------------------------
-
+ # Pipeline stages
+ 
 def run_cleaning() -> None:
     print(header("STAGE 1: DATA CLEANING"))
     t0 = time.time()
@@ -318,10 +309,8 @@ def run_report() -> None:
 """)
 
 
-# ---------------------------------------------------------------------------
-# Main
-# ---------------------------------------------------------------------------
-
+ # Main
+ 
 def main() -> None:
     parser = argparse.ArgumentParser(
         description="Conut Bakery — Chief of Operations Agent Pipeline"

@@ -84,10 +84,8 @@ class ExpansionAnalyzer:
 
         return results
 
-    # ------------------------------------------------------------------
-    # Network health assessment
-    # ------------------------------------------------------------------
-
+      # Network health assessment
+  
     def _assess_network_health(
         self, scorecard: pd.DataFrame, forecast: Dict
     ) -> Dict[str, Any]:
@@ -140,10 +138,8 @@ class ExpansionAnalyzer:
         logger.info("Network health score: %.2f", health["network_health_score"])
         return health
 
-    # ------------------------------------------------------------------
-    # Ideal new-branch profile
-    # ------------------------------------------------------------------
-
+      # Ideal new-branch profile
+  
     def _define_ideal_profile(
         self, scorecard: pd.DataFrame, benchmarks: pd.DataFrame
     ) -> Dict[str, Any]:
@@ -200,10 +196,8 @@ class ExpansionAnalyzer:
         logger.info("Defined ideal profile based on %s", profile["based_on"])
         return profile
 
-    # ------------------------------------------------------------------
-    # Risk identification
-    # ------------------------------------------------------------------
-
+      # Risk identification
+  
     def _identify_risks(
         self, scorecard: pd.DataFrame, forecast: Dict
     ) -> List[Dict[str, str]]:
@@ -281,10 +275,8 @@ class ExpansionAnalyzer:
         logger.info("Identified %d risks", len(risks))
         return risks
 
-    # ------------------------------------------------------------------
-    # Verdict
-    # ------------------------------------------------------------------
-
+      # Verdict
+  
     def _produce_verdict(
         self, health: Dict[str, Any], risks: List[Dict]
     ) -> Dict[str, str]:
@@ -318,10 +310,8 @@ class ExpansionAnalyzer:
             "high_risks": str(high_risks),
         }
 
-    # ------------------------------------------------------------------
-    # Assessment table
-    # ------------------------------------------------------------------
-
+      # Assessment table
+  
     def _build_assessment_table(
         self,
         scorecard: pd.DataFrame,
@@ -376,10 +366,8 @@ class ExpansionAnalyzer:
 
         return pd.DataFrame(rows)
 
-    # ------------------------------------------------------------------
-    # Executive summary
-    # ------------------------------------------------------------------
-
+      # Executive summary
+  
     def _build_summary(
         self,
         health: Dict,

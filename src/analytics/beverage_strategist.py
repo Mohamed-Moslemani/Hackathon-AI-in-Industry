@@ -69,10 +69,8 @@ class BeverageStrategist:
 
         return results
 
-    # ------------------------------------------------------------------
-    # Strategy actions
-    # ------------------------------------------------------------------
-
+      # Strategy actions
+  
     def _build_strategy_actions(
         self, summary_df: pd.DataFrame, gaps: pd.DataFrame
     ) -> pd.DataFrame:
@@ -153,10 +151,8 @@ class BeverageStrategist:
         logger.info("Built %d strategy actions", len(result))
         return result
 
-    # ------------------------------------------------------------------
-    # Product-level opportunities
-    # ------------------------------------------------------------------
-
+      # Product-level opportunities
+  
     def _build_product_opportunities(
         self, products: pd.DataFrame, gaps: pd.DataFrame
     ) -> pd.DataFrame:
@@ -224,10 +220,8 @@ class BeverageStrategist:
         logger.info("Identified %d product opportunities", len(result))
         return result
 
-    # ------------------------------------------------------------------
-    # Executive summary
-    # ------------------------------------------------------------------
-
+      # Executive summary
+  
     def _build_summary(
         self,
         summary_df: pd.DataFrame,
