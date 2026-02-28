@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "conut-bakery-ops": {
+      "command": "python",
+      "args": ["-m", "src.openclaw"],
+      "cwd": "."
+    }
+  }
+}
