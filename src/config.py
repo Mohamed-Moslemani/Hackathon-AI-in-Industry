@@ -14,3 +14,4 @@ RAW_FILES = {
     "monthly_sales": RAW_DATA_DIR / "rep_s_00334_1_SMRY.csv",
     "avg_sales": RAW_DATA_DIR / "rep_s_00435_SMRY.csv",
 }
+ANALYTICS_DIR = PROJECT_ROOT / "data_cleaned" / "analytics"
