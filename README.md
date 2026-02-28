@@ -71,7 +71,8 @@ This system ingests raw POS data, cleans it, engineers features, runs analytics,
 ```
 Hackathon/
 ├── run_pipeline.py                  # Main entry point — runs the full pipeline
-├── test_openclaw_integration.py     # Validates MCP server and all tools
+├── test_openclaw_integration.py     # Quick validation of MCP server and tools
+├── test_openclaw_e2e.py             # Full end-to-end MCP scenario test suite
 ├── openclaw.config.json             # OpenClaw MCP server configuration
 ├── requirements.txt                 # Python dependencies
 ├── CONUT_AI_ENGINEERING_HACKATHON.md
@@ -170,10 +171,11 @@ This executes all four stages sequentially and prints a full report:
 ### 3. Verify OpenClaw integration
 
 ```bash
-python test_openclaw_integration.py
+python test_openclaw_e2e.py                # in-memory (fast, no subprocess)
+python test_openclaw_e2e.py --subprocess   # launches the MCP server as a child process over stdio
 ```
 
-Validates that all modules import, the engine loads, all 7 tools respond, all 3 resources return valid JSON, and the config file is correct.
+Runs a full end-to-end scenario suite: pings the server, discovers tools/resources/prompts, calls every tool with realistic arguments, reads all resources, renders prompts, and validates the config file uses portable paths.
 
 ### 4. Start the MCP server
 
@@ -185,7 +187,7 @@ The server starts in **stdio mode** and waits for MCP protocol messages from Ope
 
 ### 5. Connect OpenClaw
 
-Copy the MCP server config into your OpenClaw configuration file (`~/.openclaw/openclaw.json`):
+Copy the MCP server config into your OpenClaw configuration file (`~/.openclaw/openclaw.json`), replacing `cwd` with the absolute path to this project on your machine:
 
 ```json
 {
@@ -201,6 +203,8 @@ Copy the MCP server config into your OpenClaw configuration file (`~/.openclaw/o
   }
 }
 ```
+
+> **Note:** The project's `openclaw.config.json` uses a relative `cwd` of `"."` so it works from any location. When registering with OpenClaw globally, replace `cwd` with the actual absolute path.
 
 Then restart the OpenClaw gateway. OpenClaw will auto-launch the MCP server and discover all tools.
 
@@ -373,6 +377,6 @@ Run `python run_pipeline.py --report` to see the full formatted report with all 
 |---------|---------|
 | `FileNotFoundError` on raw CSVs | Ensure `Conut bakery Scaled Data/` folder is in the project root |
 | Tools return `"error": true` | Run `python run_pipeline.py` to generate analytics data first |
-| OpenClaw can't find the server | Check that `cwd` in `openclaw.config.json` is an absolute path |
+| OpenClaw can't find the server | When registering globally, set `cwd` to the absolute path of this project |
 | `ModuleNotFoundError` | Run from the project root, or set `PYTHONPATH=.` |
 | MCP server won't start | Verify `pip install -r requirements.txt` completed successfully |
