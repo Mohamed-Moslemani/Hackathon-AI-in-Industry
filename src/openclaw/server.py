@@ -46,7 +46,7 @@ from src.inference.engine import InferenceEngine
 
 logger = logging.getLogger(__name__)
 
-# ── MCP Server ──────────────────────────────────────────────────────────
+# ── MCP Server  ───────────
 
 mcp = FastMCP(
     "ConutBakeryOps",
@@ -90,8 +90,6 @@ def _error_response(tool_name: str, error: Exception) -> str:
         "hint": "Ensure the pipeline has been run: python run_pipeline.py",
     })
 
-
-# ── Tool 1: Combo Optimization ─────────────────────────────────────────
 
 @mcp.tool()
 def get_combo_recommendations(
@@ -243,7 +241,7 @@ def ask_operations_agent(
         return _error_response("ask_operations_agent", e)
 
 
-# ── Tool 7: Health Check ───────────────────────────────────────────────
+# ── Tool 7: Health Check  
 
 @mcp.tool()
 def health_check() -> str:
@@ -287,7 +285,7 @@ def health_check() -> str:
     })
 
 
-# ── Resources ───────────────────────────────────────────────────────────
+# ── Resources  ────────────
 
 @mcp.resource("conut://branches")
 def list_branches() -> str:
@@ -335,7 +333,7 @@ def system_info() -> str:
     })
 
 
-# ── Prompts ─────────────────────────────────────────────────────────────
+# ── Prompts  
 
 @mcp.prompt()
 def daily_operations_briefing() -> str:
@@ -373,7 +371,7 @@ def branch_deep_dive(branch: str) -> str:
     )
 
 
-# ── Entry point ─────────────────────────────────────────────────────────
+# ── Entry point  ──────────
 
 if __name__ == "__main__":
     mcp.run()
