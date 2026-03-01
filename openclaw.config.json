@@ -1,9 +1,25 @@
 {
+  "models": {
+    "providers": {
+      "ollama": {
+        "baseUrl": "http://127.0.0.1:11434",
+        "apiKey": "ollama-local",
+        "api": "ollama"
+      }
+    }
+  },
+  "agents": {
+    "defaults": {
+      "model": {
+        "primary": "ollama/llama3.1:8b"
+      }
+    }
+  },
   "mcpServers": {
     "conut-bakery-ops": {
       "command": "python",
       "args": ["-m", "src.openclaw"],
-      "cwd": "/home/mohamed/Downloads/Hackathon/Hackathon",
+      "cwd": ".",
       "env": {
         "PYTHONPATH": "."
       }
